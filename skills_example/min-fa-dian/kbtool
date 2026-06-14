@@ -1,0 +1,60 @@
+#!/usr/bin/env sh
+set -eu
+
+ROOT="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+cd "$ROOT"
+
+uname_s="$(uname -s 2>/dev/null | tr '[:upper:]' '[:lower:]' || echo '')"
+uname_m="$(uname -m 2>/dev/null || echo '')"
+
+case "$uname_s" in
+  linux*) os_tag="linux" ;;
+  darwin*) os_tag="macos" ;;
+  msys*|mingw*|cygwin*) os_tag="windows" ;;
+  *) os_tag="${uname_s:-unknown}" ;;
+esac
+
+case "$uname_m" in
+  x86_64|amd64) arch_tag="x86_64" ;;
+  aarch64|arm64) arch_tag="arm64" ;;
+  *) arch_tag="${uname_m:-unknown}" ;;
+esac
+
+plat="$os_tag-$arch_tag"
+bin="$ROOT/bin/$plat/kbtool"
+bin_sha="$ROOT/bin/$plat/kbtool.sha1"
+root_sha="$ROOT/kbtool.sha1"
+py_script="$ROOT/scripts/kbtool.py"
+
+strip_sha() {
+  tr -d '
+ ' < "$1" 2>/dev/null || true
+}
+
+if [ -x "$bin" ] && [ -f "$bin_sha" ] && [ -f "$root_sha" ]; then
+  if [ "$(strip_sha "$bin_sha")" = "$(strip_sha "$root_sha")" ] && [ -n "$(strip_sha "$root_sha")" ]; then
+    exec "$bin" "$@"
+  fi
+fi
+
+if [ -x "$bin" ] && [ -f "$root_sha" ]; then
+  if [ -f "$bin_sha" ] &&      [ "$(strip_sha "$bin_sha")" != "$(strip_sha "$root_sha")" ] &&      [ -n "$(strip_sha "$root_sha")" ]; then
+    echo "[WARN] Found stale kbtool binary for $plat. Falling back to python script." >&2
+    echo "[WARN] Rebuild with --package-kbtool on this platform to update bin/$plat." >&2
+  fi
+fi
+
+if command -v python3 >/dev/null 2>&1; then
+  exec python3 "$py_script" "$@"
+fi
+if command -v python >/dev/null 2>&1; then
+  exec python "$py_script" "$@"
+fi
+
+if [ -x "$bin" ]; then
+  echo "[WARN] Python not found; running kbtool binary for $plat even if stale." >&2
+  exec "$bin" "$@"
+fi
+
+echo "[ERROR] No usable kbtool entry found. Missing scripts/kbtool.py and bin/$plat/kbtool." >&2
+exit 2

@@ -1,0 +1,35 @@
+{
+  "artifact_version": "kbtool.artifact.v3",
+  "build_toolchain_checksum": "34089677bdd7312711b0587ae7312d98af2781d4f8e291a55c4caaed76474758",
+  "corpus_manifest_sha256": "e1601dd673855e1ecec303b3620883c65687140c2ff737f7aa314ba416deaf26",
+  "created_at": "2026-06-14T05:58:58.377140+00:00",
+  "documents": {
+    "doc": {
+      "current": {
+        "active_parser": "whole_doc",
+        "doc_hash": "3014a2d8ced4916d0684afbd542a174fbc45ba8ff1d43679aca418723b90b915",
+        "doc_title": "中华人民共和国民法典",
+        "export_sha256": "7b00716b27327f23a3d5907d6561016b2d41d7d2401300dd4d598e553bfd5f38",
+        "extracted_text_fingerprint": "8131615688e1ca7ecdc2d01da3c05721e5ec110b9dffa457242afbe06f85970e",
+        "source_fingerprint": "3014a2d8ced4916d0684afbd542a174fbc45ba8ff1d43679aca418723b90b915",
+        "source_path": "/mnt/e/2025年项目/05_知识库系统研发/skills研发/测试文档/测试文档6/民法典.md"
+      }
+    }
+  },
+  "indexes": {
+    "fts": {
+      "binding_sha256": "f9aaa48b3cbc77baf4fd9ec13ccb10ce1a448da80e991fb20d90b7fe255a81f0",
+      "version": "fts.v1"
+    },
+    "sqlite": {
+      "binding_sha256": "f9aaa48b3cbc77baf4fd9ec13ccb10ce1a448da80e991fb20d90b7fe255a81f0",
+      "version": "sqlite.v1"
+    }
+  },
+  "model_registry_sha256": "815b317667d8b137f59282d1a849be201523087afeb45ff11ff2c480b42f8670",
+  "phase_contracts": {
+    "phase_a_bundle_schema": "kbtool.bundle",
+    "phase_b_export_schema": "kbtool.ir_export"
+  },
+  "schema": "kbtool.build_state.v1"
+}

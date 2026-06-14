@@ -1,0 +1,17 @@
+{
+  "title": "民法典",
+  "generated_at": "2026-06-14T05:58:58.352402+00:00",
+  "docs": [
+    {
+      "doc_id": "doc",
+      "title": "中华人民共和国民法典",
+      "source_file": "民法典.md",
+      "source_path": "/mnt/e/2025年项目/05_知识库系统研发/skills研发/测试文档/测试文档6/民法典.md",
+      "doc_hash": "3014a2d8ced4916d0684afbd542a174fbc45ba8ff1d43679aca418723b90b915",
+      "source_version": "current",
+      "active_version": true,
+      "canonical_text_path": "canonical_text/doc--current.txt",
+      "canonical_text_sha256": "8131615688e1ca7ecdc2d01da3c05721e5ec110b9dffa457242afbe06f85970e"
+    }
+  ]
+}

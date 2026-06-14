@@ -1,0 +1,17 @@
+{
+  "doc_id": "doc",
+  "doc_title": "中华人民共和国民法典",
+  "source_file": "民法典.md",
+  "source_path": "/mnt/e/2025年项目/05_知识库系统研发/skills研发/测试文档/测试文档6/民法典.md",
+  "source_version": "current",
+  "selected_parser": "whole_doc",
+  "runner_ups": [],
+  "selected_report": {
+    "mode": "whole_document",
+    "stats": {
+      "line_count": 4828,
+      "char_count": 118103,
+      "heading_count": 144
+    }
+  }
+}
